@@ -1,0 +1,40 @@
+GET http://localhost:8081/usuarios
+
+###
+GET http://localhost:8082/clientes
+
+###
+GET http://localhost:8083/equipos?clienteId=1
+
+###
+GET http://localhost:8084/instrumentos/2/calibracion
+
+###
+POST http://localhost:8085/protocolos
+Content-Type: application/json
+
+{"equipoId":1,"tecnicoId":1,"rol":"TECNICO","temperatura":20,"humedad":50}
+
+###
+POST http://localhost:8086/pruebas
+Content-Type: application/json
+
+{"protocoloId":4,"tipoPrueba":"AISLACION_10_MIN","instrumentoId":1,"realizada":true,"comentario":"Devanado AT-T a 5 kV","valores":{"lectura1":8000,"lectura10":20000,"tension":5}}
+
+###
+POST http://localhost:8086/pruebas
+Content-Type: application/json
+
+{"protocoloId":4,"tipoPrueba":"AISLACION_10_MIN","instrumentoId":2,"realizada":true,"comentario":"Instrumento vencido","valores":{"lectura1":8000,"lectura10":20000,"tension":5}}
+
+###
+PATCH http://localhost:8085/protocolos/4/estado
+Content-Type: application/json
+
+{"accion":"REGISTRAR_EN_TERRENO","usuarioId":1,"rol":"TECNICO"}
+
+###
+PATCH http://localhost:8085/protocolos/4/estado
+Content-Type: application/json
+
+{"accion":"FORMALIZAR","usuarioId":5,"rol":"INGENIERO"}
