@@ -1,11 +1,17 @@
-POST http://localhost:8081/usuarios/login
+###
+POST http://localhost:8081/usuarios/restablecer
 Content-Type: application/json
 
-{"correo":"faraneda@induztek.cl","clave":"terralog123"}
+{"correo":"faraneda@induztek.cl","nuevaClave":"nueva1234"}
 
 ###
-
 POST http://localhost:8081/usuarios/login
 Content-Type: application/json
 
-{"correo":"faraneda@induztek.cl","clave":"mala"}
+{"correo":"faraneda@induztek.cl","clave":"nueva1234"}
+
+###
+POST http://localhost:8081/usuarios/restablecer
+Content-Type: application/json
+
+{"correo":"faraneda@induztek.cl","nuevaClave":"terralog123"}

@@ -17,4 +17,14 @@ public class UsuarioServicio {
     public Optional<Usuario> login(String correo, String clave) {
         return repo.findByCorreo(correo).filter(u -> u.isActivo() && u.getClave().equals(clave));
     }
+
+    public Optional<Usuario> restablecer(String correo, String nuevaClave) {
+        if (correo == null || nuevaClave == null || nuevaClave.length() < 6) return Optional.empty();
+        return repo.findByCorreo(correo)
+                .filter(Usuario::isActivo)
+                .map(u -> {
+                    u.setClave(nuevaClave);
+                    return repo.save(u);
+                });
+    }
 }

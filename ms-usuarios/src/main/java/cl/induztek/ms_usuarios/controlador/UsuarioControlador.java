@@ -56,4 +56,11 @@ public class UsuarioControlador {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(401).build());
     }
+
+    @PostMapping("/restablecer")
+    public ResponseEntity<Void> restablecer(@RequestBody Map<String, String> datos) {
+        return servicio.restablecer(datos.get("correo"), datos.get("nuevaClave"))
+                .map(u -> ResponseEntity.ok().<Void>build())
+                .orElse(ResponseEntity.status(401).build());
+    }
 }
